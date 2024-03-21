@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Status Tracker</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+			text-align:center;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+			
+        }
+		a{
+display:inline-block;
+background-color:steelblue;
+padding:10px 10px;
+text-decoration:none;
+text-align:center;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 style="text-align:center">Complaint Status Tracker</h2>
+        
+        <form id="complaintForm">
+            <label for="complaintId" style="text-align:left">Enter Complaint ID:</label>
+            <input type="text" id="complaintId" name="complaintId" required>
+			<br><br>
+            <button type="button" onclick="trackStatus()" style="text-align:left">Track Status</button>
+        </form>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Complaint ID</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="statusTableBody">
+                <!-- Table body will be populated dynamically after tracking status -->
+            </tbody>
+        </table>
+		<br><br>
+		<a href="D:\Harshitha docs\coder hunt\Contents page.html" target="_blank" >
+				Go Back</a>
+    </div>
+
+    <script>
+        function trackStatus() {
+            // Get the input value (complaint ID)
+            const complaintIdInput = document.getElementById('complaintId');
+            const complaintId = complaintIdInput.value;
+
+            // Generate a random status (for simulation purposes)
+			 if (complaintId.trim() !== ''){
+            const statuses = ['Accepted', 'Processing'];
+            const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+
+            // Create a table row with the generated status
+            const statusTableBody = document.getElementById('statusTableBody');
+            const newRow = statusTableBody.insertRow();
+            const cell1 = newRow.insertCell(0);
+            
+            const cell2 = newRow.insertCell(1);
+            cell1.innerHTML = complaintId;
+           
+            cell2.innerHTML = randomStatus;
+
+            // Clear the input field
+            complaintIdInput.value = '';
+        }
+		else {
+                alert('Please enter a valid Complaint ID.');
+            }
+        }
+
+        // Enable Track Status button when the input field is not empty
+        document.getElementById('complaintId').addEventListener('input', function () {
+            const trackStatusButton = document.querySelector('button');
+            trackStatusButton.disabled = this.value.trim() === '';
+        });
+    </script>
+</body>
+
+</html>

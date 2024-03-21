@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grievance Redressal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+			
+        }
+
+        header,
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .complaint-container {
+            width: 60%;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select,
+        textarea,
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .complaint-container {
+    background-color:powderblue;
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+}
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+		a{
+display:inline-block;
+background-color:steelblue;
+padding:10px 10px;
+text-decoration:none;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Student Grievance Redressal System</h1>
+    </header>
+    <main>
+        <div class="complaint-container">
+            <h2>Submit a Complaint</h2>
+            <form id="complaintForm" action="submit_complaint.php" method="post">
+                <!-- Dropdown for complaint type selection -->
+                <label for="complaint-type">Complaint Type:</label>
+                <select id="complaint-type" name="complaint-type" required>
+                    <option value="">Select Complaint Type</option>
+                    <option value="Academic">Academic</option>
+                    <option value="Harassment">Harassment</option>
+					<option value="Facilities">Facilities</option>
+                    <option value="Administrative">Administrative</option>
+					<option value="Faculty concern">Faculty concern</option>
+                    <option value="Other">Other</option>
+                </select>
+                <!-- Input for complaint description -->
+                <label for="complaint-description">Complaint Description:</label>
+                <textarea id="complaint-description" name="complaint-description" required></textarea><br>
+                <input type="submit" value="Submit Complaint"></a><br><br>
+				<a href="D:\Harshitha docs\coder hunt\Contents page.html" target="_blank">
+				Go Back</a>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Student Grievance Redressal System</p>
+    </footer>
+
+    <script>
+        document.getElementById('complaintForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Generate a random complaint ID
+            var complaintId = generateComplaintId();
+
+            // Display alert with the complaint ID
+			
+            alert('Your complaint has been submitted. Your Complaint ID is: ' + complaintId);
+        });
+
+        // Function to generate a random complaint ID
+        function generateComplaintId() {
+            var characters = '0123456789';
+            var complaintId = '';
+            for (var i = 0; i < 8; i++) {
+                complaintId += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return complaintId;
+        }
+    </script>
+</body>
+
+</html>
